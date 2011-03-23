@@ -29,7 +29,7 @@ Todos.todoListController = SC.ArrayController.create({
   }
 });
 
-Todos.createTodoView = SC.TemplateView.create(SC.TextFieldSupport, {
+Todos.CreateTodoView = SC.TemplateView.extend(SC.TextFieldSupport, {
   // handle 'insertNewline' event from SC.TextFieldSupport
   insertNewline: function () {
     console.log('newline!');
