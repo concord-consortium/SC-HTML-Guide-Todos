@@ -41,3 +41,11 @@ Todos.createTodoView = SC.TemplateView.create(SC.TextFieldSupport, {
     }
   }
 });
+
+Todos.todoListView = SC.TemplateCollectionView.create({
+  contentBinding: 'Todos.todoListController'
+});
+
+Todos.CheckboxView = SC.TemplateView.extend(SC.CheckboxSupport, {
+  valueBinding: '.parentView.content.isDone'
+});
