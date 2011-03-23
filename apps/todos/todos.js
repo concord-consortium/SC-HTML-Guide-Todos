@@ -36,8 +36,14 @@ Todos.todoListController = SC.ArrayController.create({
     this.filterProperty('isDone', true).forEach(this.removeObject, this);
   },
   
-  allAreDone: function () {
-    return this.get('length') && this.everyProperty('isDone', true);
+  allAreDone: function (key, value) {
+    if (value !== undefined) {
+      this.setEach('isDone', value);
+      return value;
+    }
+    else {
+      return this.get('length') && this.everyProperty('isDone', true);
+    }
   }.property('@each.isDone')
 });
 
@@ -80,5 +86,3 @@ Todos.clearCompletedView = SC.TemplateView.create({
 Todos.markAllDoneView = SC.TemplateView.create(SC.CheckboxSupport, {
   valueBinding: 'Todos.todoListController.allAreDone'
 });
-
-  
