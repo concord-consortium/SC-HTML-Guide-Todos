@@ -6,7 +6,7 @@
 
 Todos = SC.Application.create();
 
-jQuery(document).ready(function() {
+$(function() {
   Todos.mainPane = SC.TemplatePane.append({
     layerId: 'todos',
     templateName: 'todos'
