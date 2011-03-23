@@ -1,5 +1,5 @@
 GIT
-  remote: /Users/rklancer/dev/capybara-testrunner
+  remote: git://github.com/concord-consortium/capybara-testrunner.git
   revision: 3f537eff256e849bea700701efa1b2a05b3b3851
   branch: gem
   specs:
