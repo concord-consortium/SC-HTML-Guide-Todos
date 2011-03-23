@@ -26,7 +26,11 @@ Todos.todoListController = SC.ArrayController.create({
   createTodo: function (title) {
     var todo = Todos.Todo.create({ title: title });
     this.pushObject(todo);
-  }
+  },
+  
+  remaining: function () {
+    return this.filterProperty('isDone', false).get('length');
+  }.property('@each.isDone')
 });
 
 Todos.CreateTodoView = SC.TemplateView.extend(SC.TextFieldSupport, {
@@ -48,4 +52,13 @@ Todos.todoListView = SC.TemplateCollectionView.create({
 
 Todos.CheckboxView = SC.TemplateView.extend(SC.CheckboxSupport, {
   valueBinding: '.parentView.content.isDone'
+});
+
+Todos.statsView = SC.TemplateView.create({
+  remainingBinding: 'Todos.todoListController.remaining',
+  
+  displayRemaining: function () {
+    var remaining = this.get('remaining');
+    return remaining + (remaining === 1 ? " item" : " items");
+  }.property('remaining').cacheable()
 });
