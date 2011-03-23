@@ -29,3 +29,15 @@ Todos.todoListController = SC.ArrayController.create({
   }
 });
 
+Todos.createTodoView = SC.TemplateView.create(SC.TextFieldSupport, {
+  // handle 'insertNewline' event from SC.TextFieldSupport
+  insertNewline: function () {
+    console.log('newline!');
+    var value = this.get('value');
+    
+    if (value) {
+      Todos.todoListController.createTodo(value);
+      this.set('value', '');
+    }
+  }
+});
