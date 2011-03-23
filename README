@@ -1,7 +1,28 @@
-=============================================================================
-Project:   Todos
-Copyright: ©2011 My Company, Inc.
-=============================================================================
+This repository contains the Todos app from the SproutCore "Getting Started With HTML-Based Apps" Guide at 
+http://guides.sproutcore.com/html_based.html
 
-TODO: Describe Your Project
+It includes a progressive commit history that roughly corresponds to the steps of the guide.
 
+To install or get started,
+
+(0) if you don't have RVM, get it! http://rvm.beginrescueend.com/
+
+(1) clone this repo into "todos": $ git clone git://github.com/concord-consortium/SC-HTML-Guide-Todos.git todos
+
+(2) $ cd todos
+
+(3) RVM will ask you to trust the .rvmrc file. Trust it. It may also tell you to install ruby-1.9.2. In that case, type:
+
+    $ rvm install 1.9.2
+
+(4) make sure you are using the specified gemset:
+
+    $ rvm current
+
+    ...should respond with "ruby-1.9.2-p180@todos" or the like
+    
+(5) $ bundle install
+
+(6) $ sc-server -v
+
+(7) $ open http://localhost:4020/todos
