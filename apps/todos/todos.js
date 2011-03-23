@@ -17,3 +17,8 @@ $(function() {
     templateName: 'todos'
   });
 });
+
+Todos.todoListController = SC.ArrayController.create({
+  content: []
+});
+
