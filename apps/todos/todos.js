@@ -1,22 +1,31 @@
-// ==========================================================================
-// Project:   Todos
-// Copyright: ©2011 My Company, Inc.
-// ==========================================================================
+// Template-based Todos, after http://guides.sproutcore.com/html_based.html
+
 /*globals Todos */
 
+/***
+
+  Todos namespace
+
+***/
+
 Todos = SC.Application.create();
+
+/***
+
+  Model
+
+***/
 
 Todos.Todo = SC.Object.extend({
   title: null,
   isDone: false
 });
 
-$(function() {
-  Todos.mainPane = SC.TemplatePane.append({
-    layerId: 'todos',
-    templateName: 'todos'
-  });
-});
+/***
+
+  Controller
+
+***/
 
 Todos.todoListController = SC.ArrayController.create({
   content: [],
@@ -46,6 +55,13 @@ Todos.todoListController = SC.ArrayController.create({
     }
   }.property('@each.isDone')
 });
+
+
+/***
+
+  Views
+
+***/
 
 Todos.CreateTodoView = SC.TemplateView.extend(SC.TextFieldSupport, {
   // handle 'insertNewline' event from SC.TextFieldSupport
@@ -85,4 +101,18 @@ Todos.clearCompletedView = SC.TemplateView.create({
 
 Todos.markAllDoneView = SC.TemplateView.create(SC.CheckboxSupport, {
   valueBinding: 'Todos.todoListController.allAreDone'
+});
+
+
+/***
+
+  Appends all the views to the DOM after jQuery.ready
+
+***/
+
+$(function() {
+  Todos.mainPane = SC.TemplatePane.append({
+    layerId: 'todos',
+    templateName: 'todos'
+  });
 });
