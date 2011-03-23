@@ -30,7 +30,11 @@ Todos.todoListController = SC.ArrayController.create({
   
   remaining: function () {
     return this.filterProperty('isDone', false).get('length');
-  }.property('@each.isDone')
+  }.property('@each.isDone'),
+  
+  clearCompletedTodos: function () {
+    this.filterProperty('isDone', true).forEach(this.removeObject, this);
+  }
 });
 
 Todos.CreateTodoView = SC.TemplateView.extend(SC.TextFieldSupport, {
@@ -62,3 +66,10 @@ Todos.statsView = SC.TemplateView.create({
     return remaining + (remaining === 1 ? " item" : " items");
   }.property('remaining').cacheable()
 });
+
+Todos.clearCompletedView = SC.TemplateView.create({
+  mouseUp: function () {
+    Todos.todoListController.clearCompletedTodos();
+  }
+});
+  
